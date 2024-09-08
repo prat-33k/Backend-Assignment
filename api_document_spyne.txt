@@ -1,0 +1,46 @@
+API 1: Upload CSV file 
+
+Request:
+
+curl --location --request POST 'https://spyne-img-1.onrender.com/api/uploadCSV' \
+--form 'csvFile=@"/home/momoe/Desktop/product_image.csv"'
+
+Method : POST
+
+Response :
+
+{
+    "status": "200",
+    "mssg": "Csv file processed successfully.",
+    "data": {
+        "request_id": "3388f9a8917e"
+    }
+}
+
+API 2: Check status APIs :
+
+Request: 
+
+curl --location --request GET 'https://spyne-img-1.onrender.com/api/csvStatus' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "request_id":"3388f9a8917e"
+}'
+
+Method : GET
+
+Response :
+
+{
+    "status": "200",
+    "mssg": "Successfull",
+    "data": [
+        {
+            "request_id": "3388f9a8917e",
+            "product_name": "SKU1",
+            "product_image_url": "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg",
+            "product_compressed_image_url": "http://spyne-img-1.onrender.com/uploads/compressedImages/comp-1725175125339-pexels-photo-210186.jpeg"
+        }
+    ]
+}
+
